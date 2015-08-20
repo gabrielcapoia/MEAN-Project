@@ -5,7 +5,16 @@
 	<body ng-controller='FilmesController'>
 		<h1>Teste Capoia</h1>
 
-		<p>{{filme}}</p>
+		<ul ng-repeat="filme in filmes">
+			<li>{{filme.titulo}}</li>
+		</ul>
+
+		<form ng-submit="adicionaFilme()">
+	        Titulo: <input ng-model="filme.titulo" />
+	        Diretor: <input ng-model="filme.diretor" />
+	        Ano: <input ng-model="filme.ano" />
+	        <input type="submit" />
+	    </form>
 
 		<script src='/javascripts/angular.js'></script>
 		<script src='/javascripts/FilmesController.js'></script>

@@ -1,10 +1,22 @@
 function FilmesController ($http,$scope) {
 	$http.get('/lista').success(function(retorno){
-		$scope.filme = retorno;
+		$scope.filmes = retorno.filmes;
 	});
 
-	$http.post('/grava',{ titulo:'Gattaca', diretor: 'Andrew Niccol', ano: '1997'})
-		.success(function(retorno){
-			console.log(retorno);
-		});
+	function Filme() {
+        this.nome = '';
+        this.diretor = '';
+        this.ano = '';
+    }
+
+    $scope.filme = new Filme();
+
+    $scope.adicionaFilme = function () {
+    	$http.post('/grava', $scope.filme)
+			.success(function(retorno){
+				console.log(retorno);
+			});    
+    }
+
+	
 }
