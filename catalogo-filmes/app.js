@@ -18,6 +18,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.get('/',routes.index);
 app.get('/lista',routes.lista);
 app.post('/grava',routes.grava);
+app.delete('/filme/:id', routes.deleta);
+app.put('/filme', routes.atualiza);
 
 app.set('port', process.env.PORT || 3000);
 
